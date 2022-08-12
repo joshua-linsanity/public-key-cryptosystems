@@ -14,7 +14,9 @@ SUGGESTIONS
 
 
 # HOW TO USE ELGAMAL
-Alice (elgamal_alice.py) starts off. She will be receiving the message.
+
+### Alice (elgamal_alice.py) starts off. She will be receiving the message.
+
 Part A
 1. Alice chooses number of digits in her prime number p.
 2. Alice chooses whether to use Fermat (0) or Miller-Rabin (1) primality test.
@@ -24,12 +26,14 @@ Part B
 1. Alice receives tuple (c1 c2 case) from Bob, without parentheses.
 2. Alice now decodes the secret message.
 
-Bob (elgamal_bob.py) ends. He will be sending the message.
+### Bob (elgamal_bob.py) ends. He will be sending the message.
+
 Part A
 1. Bob receives tuple (p g A) from Alice, without parentheses.
 
 Part B
 1. Bob chooses an arbitrary number k.
 2. Bob chooses his secret message.
+
 Part C
 1. Bob sends tuple (c1 c2 case) to Alice.
