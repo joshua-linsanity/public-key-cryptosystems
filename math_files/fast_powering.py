@@ -1,4 +1,5 @@
-def binary(n):
+# calculates binary number of a base-10 number n
+def binary(n: int):
     empty = ""
 
     while True:
@@ -11,9 +12,8 @@ def binary(n):
 
     return empty[::-1]
 
-
-def successive_squaring(a, b, p):
-    # calculate a**b mod p
+# calculate a**b mod p
+def successive_squaring(a: int, b: int, p: int):
     str_b = binary(b)
     product = 1
     remainder = 1

@@ -5,15 +5,9 @@ from math_files.modular_inverse import inverse_mod
 from termcolor import colored
 import random
 
-
-def publish_parameters():
-    n = int(input("Number of digits in prime: "))
-
-    # which test?
-    test_ID = int(input("Press 0 for Fermat, 1 for Miller-Rabin: "))
-
-    # strength
-    strength = int(input("Run primality test how many times?: "))
+# return p, g
+def publish_parameters(n: int, test_ID: int, strength: int):
+    
 
     p = find_prime(n, strength, test_ID)
     g = find_prim_roots(p)
@@ -21,8 +15,8 @@ def publish_parameters():
     return p, g
 
 
-# ints g, p
-def key_creation(p, g):
+# return A, a
+def key_creation(p: int, g: int):
     a = random.randint(1, p - 2)
     print(f"a: {a}")
     A = successive_squaring(g, a, p)
@@ -30,12 +24,14 @@ def key_creation(p, g):
     return A, a
 
 
-def decrypt(c1a, c2, p):
+# return m
+def decrypt(c1a: int, c2: int, p: int):
     m = (inverse_mod(c1a, p) * c2) % p
     return m
 
 
-def septemvigesimal(m, case):
+# return secret
+def septemvigesimal(m: int, case: str):
     decrypted_message = ""
 
     # count from last to first char
@@ -68,17 +64,24 @@ def septemvigesimal(m, case):
 
 
 print("STEP 1: GENERATION")
-p, g = publish_parameters()
-A, a = key_creation(p, g)
+# Inputs
+num_digits = int(input("Number of digits in prime: "))
+primality_test = int(input("Press 0 for Fermat, 1 for Miller-Rabin: "))
+num_repeats = int(input("Run primality test how many times?: "))
 
-# print(f"Alice sends\np = {p}\ng = {g}\nA = {A}\nto Bob\n")
+# Generate
+p, g = publish_parameters(num_digits, primality_test, num_repeats)
+A, a = key_creation(p, g)
 print("Alice", colored("sends", "red"), "to Bob (p g A) =", colored(f"\n{p} {g} {A}", "red"))
+
 
 print("\nSTEP 2: DECRYPTION")
 # Received from Bob
 c1c2case = input("Alice receives (c1 c2 case) from Bob: ")
+
 # String tuple
 c1, c2, case = tuple(val for val in c1c2case.split())
+
 # Change c1 and c2 to ints
 c1 = int(c1)
 c2 = int(c2)

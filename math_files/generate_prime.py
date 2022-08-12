@@ -3,7 +3,7 @@ from math_files.miller_rabin_primality_test import miller_rabin
 from math_files.fermat_primality_test import fermat
 
 
-def find_prime(n, strength, test):
+def find_prime(n: int, strength: int, test: int):
     if test == 0:
         while True:
             # find an n-digit prime

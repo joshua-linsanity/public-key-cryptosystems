@@ -2,8 +2,9 @@ from math_files.fast_powering import successive_squaring
 from termcolor import colored
 
 
-# string s
-def decimal(s, p):
+# converts string s to decimal int m
+# string s stores secret
+def decimal(s: str, p: int):
     # store case-sensitivity in binary number
     case = ""
     for i in s:
@@ -32,9 +33,7 @@ def decimal(s, p):
 
     return m, case
 
-
-# choose an integer k
-def encrypt(p, g, m, A, k):
+def encrypt(p: int, g: int, m: int, A: int, k: int):
     c1 = successive_squaring(g, k, p)
     c2 = (m * successive_squaring(A, k, p)) % p
 

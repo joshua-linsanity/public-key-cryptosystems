@@ -1,8 +1,9 @@
 from random import randint
 from math_files.fast_powering import successive_squaring
 
-
-def fermat(p, strength):
+# run fermat primality test "strength" times
+# returns prime number p
+def fermat(p: int, strength: int):
     # this is a cop-out
     if p == 2:
         return True

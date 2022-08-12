@@ -4,7 +4,7 @@ from math_files.fast_powering import successive_squaring
 
 # returns True if probably prime
 # returns False if not prime
-def miller_rabin(p, strength):
+def miller_rabin(p: int, strength: int):
     if p == 2:
         return True
 
